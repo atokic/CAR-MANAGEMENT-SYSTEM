@@ -1,0 +1,37 @@
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">{{ title }}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav mr-auto">
+        <li *ngIf="isGuest || isAdmin || isUser" class="nav-item active" routerLinkActive = "active">
+          <a class="nav-link" [routerLink]="[ 'home' ]">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li *ngIf="isUser" class="nav-item" routerLinkActive = "active">
+            <a class="nav-link" [routerLink]="[ 'cars' ]">My Cars</a>
+          </li>
+        <li *ngIf="isAdmin" class="nav-item" routerLinkActive = "active">
+            <a class="nav-link" [routerLink]="[ 'reports' ]">Cars Report</a>
+          </li>
+          <li *ngIf="isAdmin" class="nav-item" routerLinkActive = "active">
+            <a class="nav-link" [routerLink]="[ 'user-list' ]">Users Report</a>
+          </li>
+        <li *ngIf="isGuest || isAdmin || isUser" class="nav-item" routerLinkActive = "active">
+            <a class="nav-link" [routerLink]="[ 'cars-ads' ]">Cars Ads</a>
+          </li>
+      </ul>
+
+      <form class="form-inline mt-2 mt-md-0"> 
+            <div class="nav-item" routerLinkActive = "active">
+                <h5 *ngIf="userDetails"> Hello {{userDetails.userName}}! </h5>
+              <button *ngIf="isGuest" class="btn btn-outline-success my-2 my-sm-0" type="button" [routerLink]="[ 'login' ]"><i class="material-icons">fingerprint</i></button>
+            </div>
+        <button *ngIf="isAdmin || isUser" class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="onLogout()"><i class="material-icons">exit_to_app</i></button>
+      </form>
+    </div>
+  </nav>
+
+   <div class="container">
+    <router-outlet></router-outlet>
+  </div>

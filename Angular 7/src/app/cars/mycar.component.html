@@ -1,0 +1,48 @@
+<ng-template #noCars>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3>Loading Cars...</h3>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<div class="container" *ngIf="cars; else noCars">
+  <div class="row">
+    <div class="col-md-7">
+          <ng-container id="ngContainer" *ngFor="let car of cars" class="panel panel-info">
+           
+            <div *ngIf="this.carService.userDetails && this.carService.userDetails.id == car.userId" >
+            <div class="panel-heading">
+              {{car.brand | titlecase}} - {{car.model | titlecase}}
+              <div class="pull-right">
+                <button class="btn btn-xs btn-warning" (click)="editCar(car.carID)">Edit</button>
+                <button class="btn btn-xs btn-danger" (click)="deleteCar(car.carID)">Delete</button>
+              </div>
+            </div>
+            
+            <div class="panel-body">
+              <ul>
+                <li>Ad number: {{car.carID }}</li>
+                <li>Kilometers: {{ car.kilometers }}</li>
+                <li>Year: {{ car.year }}</li>
+                <li>Engine: {{ car?.fuel}} / {{ car?.power}} hp - {{ car?.consumption}} l/100km</li>
+                <li id="price">Price: {{ car.price | currency:'EUR' }}</li>
+                <li>Description: {{ car.description }}</li>
+              </ul>
+              </div>
+              
+              <div class="panel-image">          
+              <img src="{{car.image}}" alt="" style="width:450px;height:230px;">
+            <hr style="border:1px solid white;margin-top:40px">
+              </div>
+
+            </div>
+          </ng-container>
+    </div>
+    <div class="col-md-5 well well-sm">
+      <app-cars-add (update)="getCars()" [selectedCar] = "selectedCar"></app-cars-add>
+    </div>
+  </div>
+</div>

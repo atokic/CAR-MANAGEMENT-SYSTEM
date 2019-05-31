@@ -1,0 +1,26 @@
+<H1 class="report-heading">Cars Report</H1>
+
+<table class="table">
+  <tr>
+    <td>Oldest Car</td>
+    <td>{{ oldestCar?.brand }} - {{ oldestCar?.model }} / {{ oldestCar?.year }}</td>
+  </tr>
+  <tr>
+    <td>Most Used Car</td>
+    <td>{{ mostUsedCar?.brand }} - {{ mostUsedCar?.model }} / {{ mostUsedCar?.kilometers }} km</td>
+  </tr>
+  <tr>
+    <td>Most Fuel Efficient</td>
+    <td>{{ mostFuelEfficient?.brand }} - {{ mostFuelEfficient?.model }} / {{ mostFuelEfficient?.consumption }} l/100km</td>
+  </tr>
+  <tr>
+      <td>Most Expensive Car</td>
+      <td>{{ mostExpensive?.brand }} - {{ mostExpensive?.model }} / {{ mostExpensive?.price | currency:'EUR' }}</td>
+    </tr>
+  <tr>
+    <td>Total Value of Cars</td>
+    <td>{{ totalValue | currency:'EUR' }}</td>
+  </tr>
+</table>
+
+

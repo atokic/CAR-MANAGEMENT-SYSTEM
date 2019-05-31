@@ -1,0 +1,52 @@
+● src
++---● app
+|   +--● auth
+|   |  |--auth.guard.ts
+|   |  |--auth.interceptor.ts
+|	|
+|   +--● cars
+|   |  |--mycar.component.ts|.html|.css
+|	|  |
+|	|  +--●cars-add
+|	|  	  |--cars-add.component.ts|.html|.css
+|	|  
+|	|  +--●models
+|	|  	  |--car.model.ts
+|	|
+|	|  +--●shared
+|	|  	  |--car.service.ts
+|	|
+|   +--● cars-ads
+|   |  |--cars-ads.component.ts|.html|.css
+|	|
+|   +--● forbidden
+|   |  |--forbidden.component.ts|.html
+|	|
+|   +--● home
+|   |  |--home.component.ts|.html
+|	|
+|   +--● report
+|   |  |--report.component.ts|.html
+|	|
+|   +--● user
+|   |  |--user.component.ts|.html|.css
+|	|  |
+|   |  +--● login
+|   |     |--login.component.ts|.html
+|	|
+|   |  +--● registration
+|   |     |--registration.component.ts|.html
+|	|
+|   |  +--● shared
+|   |     |--user.model.ts
+|   |     |--user.service.ts
+|	|
+|   |  +--● user-list
+|   |     |--user-list.component.ts|.html|.css
+|   |  
+|   |
+|   |--app-routing.module.ts (route configs.)
+|	|--app.component.ts|.html|.css
+|   |--app.module.ts
+|
+|--index.html (cdn path for bootstrap)

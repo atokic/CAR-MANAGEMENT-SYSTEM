@@ -1,0 +1,53 @@
+<ng-template #noCars>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h3>Loading Cars...</h3>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+    <div class="search-box">
+        <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a car by ad number, model, brand, year, price or description">
+      </div>
+  <div class="row">
+    
+
+      <div class="container" *ngIf="cars; else noCars">
+          <div class="row">
+              <div *ngFor="let car of cars | filter:searchText" class="panel panel-info">
+                   
+                    <div class="panel-heading">
+                      {{car.brand | titlecase}} - {{car.model | titlecase}}      
+                      <div class="pull-right">
+                        <button *ngIf="isAdmin" class="btn btn-xs btn-danger" (click)="deleteCar(car.carID)">Delete</button>
+                      </div>
+                    </div>
+
+                    <div class="panel-body">
+                          <div class="col-md-6" id="infoColumn">
+                          <ul>
+                            <li>Ad number: {{car.carID }}</li>
+                            <li>Kilometers: {{ car.kilometers }} km</li>
+                            <li>Year: {{ car.year }}</li>
+                            <li>Engine: {{ car?.fuel}} / {{ car?.power}} hp - {{ car?.consumption}} l/100km</li>
+                            <li>Price: {{ car.price | currency:'EUR' }}</li>
+                            <button class="btn btn-xs btn-info" (click)="toggle()" id="bt">{{buttonName}}</button>
+                          </ul>
+                        </div>
+                         
+                        <div class="col-md-6" id="imageColumn">
+                          <img src="{{car.image}}" alt="" style="width:400px;height:240px;">
+                        </div>
+                     </div>
+                    
+
+                     <div class="row" id="rowDescription">
+                      <div *ngIf="show">Description: {{ car.description }}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
